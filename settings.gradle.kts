@@ -1,7 +1,9 @@
-rootProject.name = "TravelApp"
+@file:Suppress("UnstableApiUsage")
+
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             mavenContent {
@@ -10,12 +12,13 @@ pluginManagement {
                 includeGroupAndSubgroups("com.google")
             }
         }
-        mavenCentral()
         gradlePluginPortal()
+        mavenCentral()
     }
 }
 
 dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
         google {
             mavenContent {
@@ -28,8 +31,9 @@ dependencyResolutionManagement {
     }
 }
 
+rootProject.name = "TravelApp"
 include(":composeApp")
 include(":core:di")
+include(":core:app")
 include(":test:testApi")
 include(":test:testImpl")
-include(":core:app")
