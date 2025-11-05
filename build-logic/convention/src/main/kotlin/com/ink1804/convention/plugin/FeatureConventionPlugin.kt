@@ -1,6 +1,5 @@
 package com.ink1804.convention.plugin
 
-import Config
 import com.android.build.api.dsl.androidLibrary
 import com.ink1804.convention.core.libs
 import com.ink1804.convention.core.moduleName
@@ -37,20 +36,14 @@ class FeatureConventionPlugin : BaseConventionPlugin() {
 
     override fun Project.configureIOsPlatform() {
         extensions.getByType<KotlinMultiplatformExtension>().apply {
-            androidTarget().apply {
-                compilerOptions {
-                    jvmTarget.set(Config.JVM_TARGET)
-                }
-            }
-
             listOf(
                 iosX64(),
                 iosArm64(),
                 iosSimulatorArm64()
             ).forEach { iosTarget ->
                 iosTarget.binaries.framework {
-                    baseName = moduleName.replace(".", "-")
-                    isStatic = true
+                    this.baseName = moduleName.replace(".", "-")
+                    this.isStatic = true
                 }
             }
         }
@@ -68,9 +61,12 @@ class FeatureConventionPlugin : BaseConventionPlugin() {
                 commonMain.dependencies {
                     implementation(composeDependencies.runtime)
                     implementation(composeDependencies.foundation)
-                    implementation(composeDependencies.material)
+                    implementation(composeDependencies.material3)
                     implementation(composeDependencies.ui)
+                    implementation(composeDependencies.components.resources)
                     implementation(composeDependencies.components.uiToolingPreview)
+
+                    implementation(libs.findLibrary("decompose").get())
 
                     implementation(libs.findLibrary("kotlinx-coroutines-core").get())
                     implementation(libs.findLibrary("androidx-lifecycle-viewmodel-compose").get())
