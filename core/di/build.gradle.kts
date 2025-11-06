@@ -12,6 +12,10 @@ kotlin {
                 implementation(project(":test:testImpl"))
                 implementation(project(":feature:root:api"))
                 implementation(project(":feature:root:impl"))
+                implementation(project(":feature:discovery:api"))
+                implementation(project(":feature:discovery:impl"))
+                implementation(project(":feature:profile:api"))
+                implementation(project(":feature:profile:impl"))
             }
         }
     }
