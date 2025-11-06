@@ -24,6 +24,7 @@ kotlin {
             implementation(project(":core:app"))
             implementation(project(":core:di"))
             implementation(project(":feature:root:api"))
+            implementation(project(":feature:root:ui"))
         }
     }
 }

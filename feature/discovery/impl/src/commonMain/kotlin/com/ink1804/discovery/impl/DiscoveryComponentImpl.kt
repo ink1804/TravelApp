@@ -15,4 +15,11 @@ class DiscoveryComponentImpl(
      */
     private val _state = MutableStateFlow(DiscoveryState("hello im root"))
     override val state: StateFlow<DiscoveryState> = _state.asStateFlow()
+
+
+    class Factory() : DiscoveryComponent.Factory {
+        override fun invoke(context: ComponentContext): DiscoveryComponent = DiscoveryComponentImpl(
+            componentContext = context,
+        )
+    }
 }

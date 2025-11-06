@@ -1,4 +1,4 @@
-package com.ink1804.profile.impl
+package com.ink1804.profile.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

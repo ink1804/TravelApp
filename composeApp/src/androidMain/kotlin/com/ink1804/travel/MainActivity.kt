@@ -7,8 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.remember
 import com.arkivanov.decompose.DefaultComponentContext
-import com.ink1804.feature.root.api.RootEntry
-import com.ink1804.feature.root.api.RootScreenProvider
+import com.ink1804.feature.root.api.RootComponent
+import com.ink1804.root.ui.RootScreen
 import org.koin.android.ext.android.getKoin
 
 class MainActivity : ComponentActivity() {
@@ -16,14 +16,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
-        val rootEntry: RootEntry = getKoin().get()
-        val rootScreenProvider: RootScreenProvider = getKoin().get()
+        val rootComponentFactory: RootComponent.Factory = getKoin().get()
         val context = DefaultComponentContext(lifecycle)
 
         setContent {
             MaterialTheme {
-                val root = remember { rootEntry.create(context) }
-                rootScreenProvider.Content(root)
+                val root = remember { rootComponentFactory.invoke(context) }
+                RootScreen(root)
             }
         }
     }

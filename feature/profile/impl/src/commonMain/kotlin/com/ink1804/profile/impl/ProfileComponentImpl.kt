@@ -15,4 +15,11 @@ class ProfileComponentImpl(
      */
     private val _state = MutableStateFlow(ProfileState("hello im root"))
     override val state: StateFlow<ProfileState> = _state.asStateFlow()
+
+
+    class Factory() : ProfileComponent.Factory {
+        override fun invoke(context: ComponentContext): ProfileComponent = ProfileComponentImpl(
+            componentContext = context,
+        )
+    }
 }

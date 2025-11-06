@@ -5,10 +5,8 @@ plugins {
 
 kotlin {
     sourceSets {
-        commonMain {
-            dependencies {
-                implementation(project(":feature:discovery:api"))
-            }
+        commonMain.dependencies {
+            implementation(project(":feature:discovery:api"))
         }
     }
 }

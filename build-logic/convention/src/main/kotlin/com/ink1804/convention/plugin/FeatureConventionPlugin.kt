@@ -11,13 +11,13 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 @Suppress("UnstableApiUsage")
 class FeatureConventionPlugin : BaseConventionPlugin() {
-    //todo configure when first feature appear
 
     override fun Project.configurePlugin() = with(project.pluginManager) {
         apply(libs.findPlugin("kotlinMultiplatform").get().get().pluginId)
         apply(libs.findPlugin("androidKotlinMultiplatformLibrary").get().get().pluginId)
         apply(libs.findPlugin("composeMultiplatform").get().get().pluginId)
         apply(libs.findPlugin("composeCompiler").get().get().pluginId)
+        apply(libs.findPlugin("kotlinSerialization").get().get().pluginId)
     }
 
     override fun Project.configureAndroidPlatform() {
@@ -32,7 +32,6 @@ class FeatureConventionPlugin : BaseConventionPlugin() {
             }
         }
     }
-
 
     override fun Project.configureIOsPlatform() {
         extensions.getByType<KotlinMultiplatformExtension>().apply {
@@ -53,11 +52,6 @@ class FeatureConventionPlugin : BaseConventionPlugin() {
         val composeDependencies = extensions.getByType<ComposeExtension>().dependencies
         extensions.getByType<KotlinMultiplatformExtension>().apply {
             sourceSets.apply {
-                commonMain {
-                    compilerOptions {
-                        freeCompilerArgs.add("-Xcontext-receivers")
-                    }
-                }
                 commonMain.dependencies {
                     implementation(composeDependencies.runtime)
                     implementation(composeDependencies.foundation)
@@ -67,8 +61,10 @@ class FeatureConventionPlugin : BaseConventionPlugin() {
                     implementation(composeDependencies.components.uiToolingPreview)
 
                     implementation(libs.findLibrary("decompose").get())
+                    implementation(libs.findLibrary("decompose-extensions").get())
 
                     implementation(libs.findLibrary("kotlinx-coroutines-core").get())
+                    implementation(libs.findLibrary("kotlinx-serialization-json").get())
                     implementation(libs.findLibrary("androidx-lifecycle-viewmodel-compose").get())
                     implementation(libs.findLibrary("androidx-lifecycle-runtime-compose").get())
                 }

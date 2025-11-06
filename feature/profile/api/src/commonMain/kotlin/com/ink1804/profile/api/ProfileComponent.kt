@@ -6,15 +6,10 @@ import kotlinx.coroutines.flow.StateFlow
 
 interface ProfileComponent {
     val state: StateFlow<ProfileState>
-}
 
-fun interface ProfileEntry {
-    fun create(ctx: ComponentContext /*args*/): ProfileComponent
-}
-
-interface ProfileScreenProvider {
-    @Composable
-    fun Content(component: ProfileComponent)
+    fun interface Factory {
+        operator fun invoke(context: ComponentContext): ProfileComponent
+    }
 }
 
 data class ProfileState(

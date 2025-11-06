@@ -98,6 +98,7 @@ class ApplicationConventionPlugin : BaseConventionPlugin() {
                     implementation(composeDependencies.components.uiToolingPreview)
 
                     implementation(libs.findLibrary("decompose").get())
+                    implementation(libs.findLibrary("decompose-extensions").get())
                 }
             }
 

@@ -8,6 +8,8 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(project(":feature:root:api"))
+                implementation(project(":feature:discovery:api"))
+                implementation(project(":feature:profile:api"))
             }
         }
     }

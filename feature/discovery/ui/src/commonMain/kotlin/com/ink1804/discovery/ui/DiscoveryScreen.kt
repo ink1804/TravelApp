@@ -1,4 +1,4 @@
-package com.ink1804.discovery.impl
+package com.ink1804.discovery.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
