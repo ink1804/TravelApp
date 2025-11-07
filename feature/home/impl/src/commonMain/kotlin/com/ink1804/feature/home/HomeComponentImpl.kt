@@ -1,0 +1,76 @@
+package com.ink1804.feature.home
+
+import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.decompose.router.stack.ChildStack
+import com.arkivanov.decompose.router.stack.StackNavigation
+import com.arkivanov.decompose.router.stack.bringToFront
+import com.arkivanov.decompose.router.stack.childStack
+import com.arkivanov.decompose.value.Value
+import com.ink1804.feature.discovery.DiscoveryComponent
+import com.ink1804.feature.profile.ProfileComponent
+import kotlinx.serialization.Serializable
+
+class HomeComponentImpl(
+    componentContext: ComponentContext,
+    private val profileComponentFactory: ProfileComponent.Factory,
+    private val discoveryComponentFactory: DiscoveryComponent.Factory,
+) : HomeComponent, ComponentContext by componentContext {
+
+    private val profileComponent by lazy { profileComponentFactory.invoke(componentContext) }
+    private val discoveryComponent by lazy { discoveryComponentFactory.invoke(componentContext) }
+    private val navigation = StackNavigation<ChildConfig>()
+
+    private val tabs = listOf(
+        HomeTab.Discovery,
+        HomeTab.Profile,
+    )
+
+    override val childStack: Value<ChildStack<*, HomeComponent.Child>> = childStack(
+        source = navigation,
+        initialConfiguration = ChildConfig.Discovery,
+        serializer = ChildConfig.serializer(),
+        handleBackButton = true,
+        childFactory = ::createChild,
+        key = "HomeComponentStack"
+    )
+
+    fun createChild(
+        config: ChildConfig,
+        componentContext: ComponentContext
+    ): HomeComponent.Child = when (config) {
+        ChildConfig.Discovery -> HomeComponent.Child.Discovery(discoveryComponent)
+        ChildConfig.Profile -> HomeComponent.Child.Profile(profileComponent)
+    }
+
+    override fun onTabSelected(index: Int) {
+        val configuration = tabs[index].toConfiguration()
+
+        navigation.bringToFront(configuration)
+    }
+
+    private fun HomeTab.toConfiguration(): ChildConfig = when (this) {
+        HomeTab.Discovery -> ChildConfig.Discovery
+        HomeTab.Profile -> ChildConfig.Profile
+    }
+
+    class Factory(
+        private val profileComponentFactory: ProfileComponent.Factory,
+        private val discoveryComponentFactory: DiscoveryComponent.Factory,
+    ) : HomeComponent.Factory {
+        override fun invoke(context: ComponentContext): HomeComponent = HomeComponentImpl(
+            componentContext = context,
+            profileComponentFactory = profileComponentFactory,
+            discoveryComponentFactory = discoveryComponentFactory,
+        )
+    }
+}
+
+@Serializable
+sealed interface ChildConfig {
+
+    @Serializable
+    data object Discovery : ChildConfig
+
+    @Serializable
+    data object Profile : ChildConfig
+}

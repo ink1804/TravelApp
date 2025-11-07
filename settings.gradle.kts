@@ -1,5 +1,3 @@
-@file:Suppress("UnstableApiUsage")
-
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
@@ -37,3 +35,16 @@ include(":core:di")
 include(":core:app")
 include(":test:testApi")
 include(":test:testImpl")
+include(":feature:root:api")
+include(":feature:root:impl")
+include(":feature:root:ui")
+include(":feature:discovery:api")
+include(":feature:discovery:impl")
+include(":feature:discovery:ui")
+include(":feature:profile:api")
+include(":feature:profile:impl")
+include(":feature:profile:ui")
+include(":feature:home:api")
+include(":feature:home:ui")
+include(":feature:home:impl")
+include(":core:ui")

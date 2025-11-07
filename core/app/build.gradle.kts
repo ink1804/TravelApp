@@ -6,10 +6,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain {
-            dependencies {
-                implementation(libs.androidx.lifecycle.viewmodel.compose)
-                implementation(project(":test:testApi"))
-            }
+            dependencies {}
         }
     }
 }

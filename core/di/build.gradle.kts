@@ -8,9 +8,16 @@ kotlin {
         commonMain {
             dependencies {
                 api(project(":core:app"))
-//                implementation(project(":core:app"))
                 implementation(project(":test:testApi"))
                 implementation(project(":test:testImpl"))
+                implementation(project(":feature:root:api"))
+                implementation(project(":feature:root:impl"))
+                implementation(project(":feature:home:api"))
+                implementation(project(":feature:home:impl"))
+                implementation(project(":feature:discovery:api"))
+                implementation(project(":feature:discovery:impl"))
+                implementation(project(":feature:profile:api"))
+                implementation(project(":feature:profile:impl"))
             }
         }
     }
