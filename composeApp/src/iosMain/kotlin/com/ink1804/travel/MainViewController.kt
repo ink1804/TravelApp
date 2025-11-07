@@ -7,8 +7,8 @@ import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import com.arkivanov.essenty.lifecycle.destroy
 import com.arkivanov.essenty.lifecycle.resume
-import com.ink1804.feature.root.api.RootComponent
-import com.ink1804.root.ui.RootScreen
+import com.ink1804.feature.root.RootComponent
+import com.ink1804.feature.root.RootScreen
 import org.koin.compose.getKoin
 
 fun MainViewController() = ComposeUIViewController {

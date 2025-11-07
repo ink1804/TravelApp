@@ -1,0 +1,23 @@
+package com.ink1804.feature.profile
+
+import com.arkivanov.decompose.ComponentContext
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+
+class ProfileComponentImpl(
+    componentContext: ComponentContext,
+) : ProfileComponent {
+    /*
+    create coroutine scope
+     */
+    private val _state = MutableStateFlow(ProfileState("hello im root"))
+    override val state: StateFlow<ProfileState> = _state.asStateFlow()
+
+
+    class Factory() : ProfileComponent.Factory {
+        override fun invoke(context: ComponentContext): ProfileComponent = ProfileComponentImpl(
+            componentContext = context,
+        )
+    }
+}
