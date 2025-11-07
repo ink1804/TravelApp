@@ -6,8 +6,7 @@ import org.koin.dsl.module
 val rootModule = module {
     factory<RootComponent.Factory> {
         RootComponentImpl.Factory(
-            profileComponentFactory = get(),
-            discoveryComponentFactory = get(),
+            homeComponentFactory = get(),
         )
     }
 }

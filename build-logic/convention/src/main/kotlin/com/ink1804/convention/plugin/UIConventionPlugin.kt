@@ -11,7 +11,6 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 @Suppress("UnstableApiUsage")
 class UIConventionPlugin : BaseConventionPlugin() {
-    //todo configure when first feature appear
 
     override fun Project.configurePlugin() = with(project.pluginManager) {
         apply(libs.findPlugin("kotlinMultiplatform").get().get().pluginId)
