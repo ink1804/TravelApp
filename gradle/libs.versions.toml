@@ -14,6 +14,9 @@ koin = "4.1.1"
 decompose = "3.4.0"
 serialization = "1.9.0"
 
+materialIconsExtended = "1.7.3"
+
+
 androidx-activity = "1.11.0"
 androidx-appcompat = "1.7.1"
 androidx-core = "1.17.0"
@@ -21,8 +24,6 @@ androidx-lifecycle = "2.9.5"
 
 composeGradlePlugin = "1.9.2"
 composeMultiplatform = "1.9.2"
-
-
 
 androidx-espresso = "3.7.0"
 androidx-testExt = "1.3.0"
@@ -45,6 +46,7 @@ decompose-extensions = { module = "com.arkivanov.decompose:extensions-compose", 
 
 #compose
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "composeMultiplatform" }
+material-icons-extended = { module = "org.jetbrains.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "kotlinxCoroutinesCore" }

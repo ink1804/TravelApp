@@ -64,6 +64,7 @@ class FeatureConventionPlugin : BaseConventionPlugin() {
                     implementation(libs.findLibrary("decompose-extensions").get())
 
                     implementation(libs.findLibrary("kotlinx-coroutines-core").get())
+                    implementation(libs.findLibrary("material-icons-extended").get())
                     implementation(libs.findLibrary("kotlinx-serialization-json").get())
                     implementation(libs.findLibrary("androidx-lifecycle-viewmodel-compose").get())
                     implementation(libs.findLibrary("androidx-lifecycle-runtime-compose").get())

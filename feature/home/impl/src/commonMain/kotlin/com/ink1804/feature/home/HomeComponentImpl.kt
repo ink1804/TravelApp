@@ -20,6 +20,11 @@ class HomeComponentImpl(
     private val discoveryComponent by lazy { discoveryComponentFactory.invoke(componentContext) }
     private val navigation = StackNavigation<ChildConfig>()
 
+    private val tabs = listOf(
+        HomeTab.Discovery,
+        HomeTab.Profile,
+    )
+
     override val childStack: Value<ChildStack<*, HomeComponent.Child>> = childStack(
         source = navigation,
         initialConfiguration = ChildConfig.Discovery,
@@ -37,8 +42,9 @@ class HomeComponentImpl(
         ChildConfig.Profile -> HomeComponent.Child.Profile(profileComponent)
     }
 
-    override fun onTabSelected(tab: HomeTab) {
-        val configuration = tab.toConfiguration()
+    override fun onTabSelected(index: Int) {
+        val configuration = tabs[index].toConfiguration()
+
         navigation.bringToFront(configuration)
     }
 
