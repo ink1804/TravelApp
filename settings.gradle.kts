@@ -31,12 +31,16 @@ dependencyResolutionManagement {
 
 rootProject.name = "TravelApp"
 include(":composeApp")
+
 include(":core:di")
 include(":core:app")
 include(":core:ui")
 include(":core:logger")
+include(":core:coroutines")
+
 include(":test:testApi")
 include(":test:testImpl")
+
 include(":feature:root:api")
 include(":feature:root:impl")
 include(":feature:root:ui")

@@ -48,9 +48,7 @@ class LibraryConventionPlugin : BaseConventionPlugin() {
     override fun Project.configureCommonDependencies() {
         extensions.getByType<KotlinMultiplatformExtension>().apply {
             sourceSets.apply {
-                commonMain.dependencies {
-                    implementation(libs.findLibrary("kotlin-stdlib").get())
-                }
+                commonMain.dependencies {}
             }
         }
     }

@@ -61,6 +61,7 @@ class FeatureConventionPlugin : BaseConventionPlugin() {
                     implementation(composeDependencies.components.uiToolingPreview)
 
                     implementation(project(":core:logger"))
+                    implementation(project(":core:coroutines"))
                     implementation(libs.findLibrary("decompose").get())
                     implementation(libs.findLibrary("decompose-extensions").get())
 
