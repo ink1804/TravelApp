@@ -62,6 +62,8 @@ class FeatureConventionPlugin : BaseConventionPlugin() {
 
                     implementation(project(":core:logger"))
                     implementation(project(":core:coroutines"))
+                    implementation(project(":core:analytics:api"))
+
                     implementation(libs.findLibrary("decompose").get())
                     implementation(libs.findLibrary("decompose-extensions").get())
 

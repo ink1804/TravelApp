@@ -14,6 +14,7 @@ class HomeComponentImpl(
     componentContext: ComponentContext,
     private val profileComponentFactory: ProfileComponent.Factory,
     private val discoveryComponentFactory: DiscoveryComponent.Factory,
+    private val analytics: HomeAnalytics,
 ) : HomeComponent, ComponentContext by componentContext {
 
     private val profileComponent by lazy { profileComponentFactory.invoke(componentContext) }
@@ -27,7 +28,7 @@ class HomeComponentImpl(
 
     override val childStack: Value<ChildStack<*, HomeComponent.Child>> = childStack(
         source = navigation,
-        initialConfiguration = ChildConfig.Discovery,
+        initialConfiguration = ChildConfig.Discovery.also { analytics.screenOpened(it.screenId) },
         serializer = ChildConfig.serializer(),
         handleBackButton = true,
         childFactory = ::createChild,
@@ -44,7 +45,7 @@ class HomeComponentImpl(
 
     override fun onTabSelected(index: Int) {
         val configuration = tabs[index].toConfiguration()
-
+        analytics.screenOpened(configuration.screenId)
         navigation.bringToFront(configuration)
     }
 
@@ -56,21 +57,23 @@ class HomeComponentImpl(
     class Factory(
         private val profileComponentFactory: ProfileComponent.Factory,
         private val discoveryComponentFactory: DiscoveryComponent.Factory,
+        private val analytics: HomeAnalytics,
     ) : HomeComponent.Factory {
         override fun invoke(context: ComponentContext): HomeComponent = HomeComponentImpl(
             componentContext = context,
             profileComponentFactory = profileComponentFactory,
             discoveryComponentFactory = discoveryComponentFactory,
+            analytics = analytics,
         )
     }
 }
 
 @Serializable
-sealed interface ChildConfig {
+sealed class ChildConfig(val screenId: String) {
 
     @Serializable
-    data object Discovery : ChildConfig
+    data object Discovery : ChildConfig("discovery")
 
     @Serializable
-    data object Profile : ChildConfig
+    data object Profile : ChildConfig("profile")
 }

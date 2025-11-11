@@ -54,3 +54,6 @@ include(":feature:home:api")
 include(":feature:home:ui")
 include(":feature:home:impl")
 
+include(":core:analytics:api")
+include(":core:analytics:impl-composite")
+include(":core:analytics:impl-debug")

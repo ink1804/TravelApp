@@ -6,7 +6,8 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":test:testApi"))
+            implementation(project(":core:analytics:api"))
+            implementation(project(":core:analytics:impl-debug"))
         }
     }
 }
