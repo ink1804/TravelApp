@@ -15,6 +15,7 @@ class LibraryConventionPlugin : BaseConventionPlugin() {
     override fun Project.configurePlugin() = with(project.pluginManager) {
         apply(libs.findPlugin("kotlinMultiplatform").get().get().pluginId)
         apply(libs.findPlugin("androidKotlinMultiplatformLibrary").get().get().pluginId)
+        apply("com.ink1804.convention.konfig")
     }
 
     override fun Project.configureAndroidPlatform() {

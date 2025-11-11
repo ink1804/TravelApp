@@ -23,6 +23,8 @@ dependencies {
     implementation(libs.kotlin.gradle.plugin)
     implementation(libs.google.services)
     implementation(libs.compose.gradle.plugin)
+    implementation(libs.build.konfig)
+    implementation(libs.build.konfig.compiler)
 }
 
 gradlePlugin {
@@ -42,6 +44,10 @@ gradlePlugin {
         register("com.ink1804.convention.application"){
             id = "com.ink1804.convention.application"
             implementationClass = "com.ink1804.convention.plugin.ApplicationConventionPlugin"
+        }
+        register("com.ink1804.convention.konfig"){
+            id = "com.ink1804.convention.konfig"
+            implementationClass = "com.ink1804.convention.plugin.KonfigConventionPlugin"
         }
     }
 }

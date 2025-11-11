@@ -101,8 +101,8 @@ class ApplicationConventionPlugin : BaseConventionPlugin() {
                     implementation(libs.findLibrary("decompose-extensions").get())
                 }
             }
-
         }
+
         dependencies {
             add("debugImplementation", composeDependencies.uiTooling)
         }

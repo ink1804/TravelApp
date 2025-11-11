@@ -9,6 +9,7 @@ applicationId = "com.ink1804.travel"
 agp = "8.13.1"
 kotlin = "2.2.21"
 google_services = "4.4.4"
+buildKonfig = "0.17.1"
 
 koin = "4.1.1"
 decompose = "3.4.0"
@@ -40,6 +41,8 @@ kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", v
 kotlin-multiplatform-gradle-plugin = { module = "org.jetbrains.kotlin.multiplatform:org.jetbrains.kotlin.multiplatform.gradle.plugin", version.ref = "kotlin" }
 google-services = { module = "com.google.gms:google-services", version.ref = "google_services" }
 compose-gradle-plugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "composeGradlePlugin" }
+build-konfig = { module = "com.codingfeline.buildkonfig:buildkonfig-gradle-plugin", version.ref = "buildKonfig" }
+build-konfig-compiler = { module = "com.codingfeline.buildkonfig:buildkonfig-compiler", version.ref = "buildKonfig" }
 
 #decompose
 decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
@@ -98,6 +101,7 @@ composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMul
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+buildKonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildKonfig" }
 
 androidKotlinMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 androidLint = { id = "com.android.lint", version.ref = "agp" }

@@ -10,7 +10,7 @@ object Config {
 
     val JAVA_SOURCE = JavaVersion.VERSION_21
     val JAVA_TARGET = JavaVersion.VERSION_21
-    val JVM_TARGET = JvmTarget.JVM_11
+    val JVM_TARGET = JvmTarget.JVM_21
 
     fun getVersionName(): String {
         return getVersionProperties()["version.name"].toString()

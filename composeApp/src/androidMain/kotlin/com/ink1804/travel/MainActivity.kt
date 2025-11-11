@@ -22,8 +22,7 @@ class MainActivity : ComponentActivity() {
 
         val rootComponentFactory: RootComponent.Factory = getKoin().get()
         val context = DefaultComponentContext(lifecycle)
-        WindowInsetsControllerCompat(window, window.decorView)
-            .isAppearanceLightStatusBars = true
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
 
         setContent {
             val colors = if (true) darkColorScheme() else lightColorScheme(

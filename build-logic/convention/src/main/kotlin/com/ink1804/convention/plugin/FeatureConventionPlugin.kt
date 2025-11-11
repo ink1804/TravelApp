@@ -18,6 +18,7 @@ class FeatureConventionPlugin : BaseConventionPlugin() {
         apply(libs.findPlugin("composeMultiplatform").get().get().pluginId)
         apply(libs.findPlugin("composeCompiler").get().get().pluginId)
         apply(libs.findPlugin("kotlinSerialization").get().get().pluginId)
+        apply("com.ink1804.convention.konfig")
     }
 
     override fun Project.configureAndroidPlatform() {
