@@ -6,7 +6,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":feature:discovery:api"))
+            api(project(":feature:discovery:api"))
         }
     }
 }

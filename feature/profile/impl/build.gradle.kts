@@ -6,7 +6,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":feature:profile:api"))
+            api(project(":feature:profile:api"))
         }
     }
 }

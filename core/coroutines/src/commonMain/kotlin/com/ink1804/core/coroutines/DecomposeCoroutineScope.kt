@@ -10,8 +10,8 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlin.coroutines.CoroutineContext
 
-fun ComponentContext.createCoroutineScope() {
-    this.coroutineScope(Dispatchers.Main.immediate + SupervisorJob())
+fun ComponentContext.createCoroutineScope(): CoroutineScope {
+    return this.coroutineScope(Dispatchers.Main.immediate + SupervisorJob())
 }
 fun LifecycleOwner.coroutineScope(context: CoroutineContext): CoroutineScope {
     return CoroutineScope(context, lifecycle)

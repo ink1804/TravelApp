@@ -6,8 +6,10 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":feature:root:api"))
+            api(project(":feature:root:api"))
             implementation(project(":feature:home:api"))
+            implementation(project(":feature:debug:api"))
+            implementation(project(":core:platform"))
         }
     }
 }

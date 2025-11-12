@@ -1,11 +1,9 @@
 package com.ink1804.feature.root
 
+import org.koin.core.module.dsl.factoryOf
+import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val rootModule = module {
-    factory<RootComponent.Factory> {
-        RootComponentImpl.Factory(
-            homeComponentFactory = get(),
-        )
-    }
+    factoryOf(RootComponentImpl::Factory) bind RootComponent.Factory::class
 }
