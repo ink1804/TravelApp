@@ -41,9 +41,6 @@ internal class RootComponentImpl(
         }
     }
 
-    private val homeComponent by lazy { homeComponentFactory.invoke(componentContext) }
-    private val debugMenuComponent by lazy { debugMenuComponentFactory.invoke(componentContext) }
-
     private val navigation = StackNavigation<ChildConfig>()
     private val debugNav = SlotNavigation<OverlayChildConfig>()
 
@@ -76,7 +73,7 @@ internal class RootComponentImpl(
         config: ChildConfig,
         componentContext: ComponentContext
     ): RootComponent.Child = when (config) {
-        ChildConfig.Home -> RootComponent.Child.Home(homeComponent)
+        ChildConfig.Home -> RootComponent.Child.Home(homeComponentFactory.invoke(componentContext))
         ChildConfig.Onboarding -> RootComponent.Child.Onboarding()
     }
 
@@ -84,7 +81,7 @@ internal class RootComponentImpl(
         config: OverlayChildConfig,
         componentContext: ComponentContext
     ): RootComponent.OverlayChild = when (config) {
-        OverlayChildConfig.DebugMenu -> RootComponent.OverlayChild.DebugMenu(debugMenuComponent)
+        OverlayChildConfig.DebugMenu -> RootComponent.OverlayChild.DebugMenu(debugMenuComponentFactory.invoke(componentContext))
     }
 
     class Factory(

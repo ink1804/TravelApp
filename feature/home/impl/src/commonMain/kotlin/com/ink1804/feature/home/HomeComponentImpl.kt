@@ -17,8 +17,6 @@ class HomeComponentImpl(
     private val analytics: HomeAnalytics,
 ) : HomeComponent, ComponentContext by componentContext {
 
-    private val profileComponent by lazy { profileComponentFactory.invoke(componentContext) }
-    private val discoveryComponent by lazy { discoveryComponentFactory.invoke(componentContext) }
     private val navigation = StackNavigation<ChildConfig>()
 
     private val tabs = listOf(
@@ -39,8 +37,8 @@ class HomeComponentImpl(
         config: ChildConfig,
         componentContext: ComponentContext
     ): HomeComponent.Child = when (config) {
-        ChildConfig.Discovery -> HomeComponent.Child.Discovery(discoveryComponent)
-        ChildConfig.Profile -> HomeComponent.Child.Profile(profileComponent)
+        ChildConfig.Discovery -> HomeComponent.Child.Discovery(discoveryComponentFactory.invoke(componentContext))
+        ChildConfig.Profile -> HomeComponent.Child.Profile(profileComponentFactory.invoke(componentContext))
     }
 
     override fun onTabSelected(index: Int) {
