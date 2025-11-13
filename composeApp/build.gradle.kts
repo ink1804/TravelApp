@@ -21,10 +21,22 @@ kotlin {
         }
         commonMain.dependencies {
             implementation(compose.components.resources)
+
+            // Core modules
             implementation(project(":core:app"))
+            implementation(project(":core:platform"))
             implementation(project(":core:di"))
-            implementation(project(":feature:root:api"))
+            implementation(project(":core:config:impl"))
+            implementation(project(":core:analytics:impl-composite"))
+
+            // Feature modules
             implementation(project(":feature:root:ui"))
+            implementation(project(":feature:root:impl"))
+            implementation(project(":feature:debug:impl"))
+            implementation(project(":feature:home:impl"))
+            implementation(project(":feature:discovery:impl"))
+            implementation(project(":feature:profile:impl"))
+
         }
     }
 }
