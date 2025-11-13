@@ -8,9 +8,6 @@ import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.extensions.compose.stack.Children
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
@@ -22,23 +19,24 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun HomeScreen(component: HomeComponent) {
-    val state by component.childStack.subscribeAsState()
-    var selectedIndex by remember { mutableStateOf(0) }
+    val childStack by component.childStack.subscribeAsState()
+
+    val currentTab = when (childStack.active.instance) {
+        is HomeComponent.Child.Discovery -> HomeTab.Discovery
+        is HomeComponent.Child.Profile -> HomeTab.Profile
+    }
 
     Scaffold(
         bottomBar = {
             CurvedBottomNavigation(
                 items = navItems,
-                selectedIndex = selectedIndex,
-                onItemSelected = { index ->
-                    selectedIndex = index
-                    component.onTabSelected(selectedIndex)
-                }
+                selectedTab = currentTab,
+                onItemSelected = component::onTabSelected
             )
         }
     ) {
         Children(
-            stack = state,
+            stack = childStack,
             animation = null,
             modifier = Modifier,
         ) {
@@ -57,14 +55,16 @@ private fun Preview() {
 }
 
 val navItems = listOf(
-    NavItem(
+    NavItem<HomeTab>(
         label = "Discovery",
         icon = Icons.Outlined.Home,
         selectedIcon = Icons.Filled.Home,
+        tab = HomeTab.Discovery
     ),
-    NavItem(
+    NavItem<HomeTab>(
         label = "Profile",
         icon = Icons.Outlined.Person,
         selectedIcon = Icons.Filled.Person,
+        tab = HomeTab.Profile
     ),
 )

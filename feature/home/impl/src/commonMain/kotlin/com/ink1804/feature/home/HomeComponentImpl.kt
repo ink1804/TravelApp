@@ -19,11 +19,6 @@ class HomeComponentImpl(
 
     private val navigation = StackNavigation<ChildConfig>()
 
-    private val tabs = listOf(
-        HomeTab.Discovery,
-        HomeTab.Profile,
-    )
-
     override val childStack: Value<ChildStack<*, HomeComponent.Child>> = childStack(
         source = navigation,
         initialConfiguration = ChildConfig.Discovery.also { analytics.screenOpened(it.screenId) },
@@ -41,8 +36,8 @@ class HomeComponentImpl(
         ChildConfig.Profile -> HomeComponent.Child.Profile(profileComponentFactory.invoke(componentContext))
     }
 
-    override fun onTabSelected(index: Int) {
-        val configuration = tabs[index].toConfiguration()
+    override fun onTabSelected(tab: HomeTab) {
+        val configuration = tab.toConfiguration()
         analytics.screenOpened(configuration.screenId)
         navigation.bringToFront(configuration)
     }
@@ -67,8 +62,9 @@ class HomeComponentImpl(
 }
 
 @Serializable
-sealed class ChildConfig(val screenId: String) {
-
+sealed class ChildConfig(
+    val screenId: String
+) {
     @Serializable
     data object Discovery : ChildConfig("discovery")
 

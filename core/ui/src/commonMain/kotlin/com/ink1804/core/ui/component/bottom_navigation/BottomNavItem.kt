@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.sp
 import com.ink1804.core.ui.util.bounceClickable
 
 @Composable
-fun BottomNavItem(
-    item: NavItem,
+fun <T> BottomNavItem(
+    item: NavItem<T>,
     isSelected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,

@@ -11,7 +11,7 @@ interface HomeComponent {
 
     val childStack: Value<ChildStack<*, Child>>
 
-    fun onTabSelected(index: Int)
+    fun onTabSelected(tab: HomeTab)
 
     sealed interface Child {
         class Discovery(val component: DiscoveryComponent) : Child

@@ -70,9 +70,9 @@ import kotlinx.coroutines.launch
  * @param onItemSelected Callback invoked with the selected item index.
  */
 @Composable
-fun CurvedBottomNavigation(
-    items: List<NavItem>,
-    selectedIndex: Int,
+fun <T>CurvedBottomNavigation(
+    items: List<NavItem<T>>,
+    selectedTab: T,
     modifier: Modifier = Modifier.fillMaxSize(),
     bottomBarAlignment: Alignment = Alignment.BottomCenter,
     curveAnimationType: CurveAnimationType = CurveAnimationType.SMOOTH,
@@ -97,7 +97,7 @@ fun CurvedBottomNavigation(
     showDot: Boolean = true,
     showLabels: Boolean = true,
     enableHapticFeedback: Boolean = false,
-    onItemSelected: (Int) -> Unit,
+    onItemSelected: (T) -> Unit,
 ) {
     BoxWithConstraints(
         modifier = modifier,
@@ -107,7 +107,7 @@ fun CurvedBottomNavigation(
 
         CurvedBottomNavigationContent(
             items = items,
-            selectedIndex = selectedIndex,
+            selectedIndex = items.indexOfFirst { it.tab == selectedTab },
             onItemSelected = onItemSelected,
             componentWidth = componentWidth,
             fabBackgroundColor = fabBackgroundColor,
@@ -137,10 +137,10 @@ fun CurvedBottomNavigation(
 }
 
 @Composable
-private fun CurvedBottomNavigationContent(
-    items: List<NavItem>,
+private fun <T>CurvedBottomNavigationContent(
+    items: List<NavItem<T>>,
     selectedIndex: Int,
-    onItemSelected: (Int) -> Unit,
+    onItemSelected: (T) -> Unit,
     componentWidth: Dp,
     fabBackgroundColor: Color,
     fabIconTint: Color,
@@ -287,7 +287,7 @@ private fun CurvedBottomNavigationContent(
                             if (enableHapticFeedback) haptic.performHapticFeedback(HapticFeedbackType.Confirm)
                             previousIndex = currentIndex
                             currentIndex = index
-                            onItemSelected(index)
+                            onItemSelected(item.tab)
                         }
                     },
                     modifier = Modifier.weight(1f),
