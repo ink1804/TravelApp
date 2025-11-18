@@ -1,4 +1,4 @@
-package com.ink1804.config.api
+package com.ink1804.core.config
 
 interface FeatureToggleRepository {
     fun isEnabled(featureKey: FeatureKey): Boolean

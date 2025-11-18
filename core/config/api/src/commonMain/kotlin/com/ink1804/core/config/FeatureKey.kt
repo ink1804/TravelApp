@@ -1,4 +1,4 @@
-package com.ink1804.config.api
+package com.ink1804.core.config
 
 enum class FeatureKey(val key: String) {
     TestFeature("feature_test")
