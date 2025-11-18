@@ -9,6 +9,8 @@ kotlin {
             api(project(":feature:home:api"))
             implementation(project(":feature:discovery:api"))
             implementation(project(":feature:profile:api"))
+            implementation(project(":core:storage:api"))
+            implementation(project(":test:testApi"))
         }
     }
 }

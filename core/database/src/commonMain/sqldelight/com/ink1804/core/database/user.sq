@@ -1,0 +1,20 @@
+CREATE TABLE userEntity (
+id TEXT NOT NULL PRIMARY KEY,
+name TEXT NOT NULL
+);
+
+selectById:
+SELECT * FROM userEntity WHERE id = ?;
+
+selectAll:
+SELECT * FROM userEntity;
+
+upsert:
+INSERT OR REPLACE INTO userEntity(id, name)
+VALUES (?, ?);
+
+deleteById:
+DELETE FROM userEntity WHERE id = ?;
+
+clearAll:
+DELETE FROM userEntity;

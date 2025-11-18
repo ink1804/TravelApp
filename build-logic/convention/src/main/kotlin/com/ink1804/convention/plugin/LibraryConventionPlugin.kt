@@ -49,7 +49,9 @@ class LibraryConventionPlugin : BaseConventionPlugin() {
     override fun Project.configureCommonDependencies() {
         extensions.getByType<KotlinMultiplatformExtension>().apply {
             sourceSets.apply {
-                commonMain.dependencies {}
+                commonMain.dependencies {
+                    implementation(libs.findLibrary("kotlinx-coroutines-core").get())
+                }
             }
         }
     }

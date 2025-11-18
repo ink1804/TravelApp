@@ -6,8 +6,11 @@ import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
+import com.ink1804.core.coroutines.createCoroutineScope
 import com.ink1804.feature.discovery.DiscoveryComponent
 import com.ink1804.feature.profile.ProfileComponent
+import com.ink1804.testapi.TestApi
+import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 
 class HomeComponentImpl(
@@ -15,9 +18,11 @@ class HomeComponentImpl(
     private val profileComponentFactory: ProfileComponent.Factory,
     private val discoveryComponentFactory: DiscoveryComponent.Factory,
     private val analytics: HomeAnalytics,
+    private val testApi: TestApi,
 ) : HomeComponent, ComponentContext by componentContext {
 
     private val navigation = StackNavigation<ChildConfig>()
+    private val coroutineScope = componentContext.createCoroutineScope()
 
     override val childStack: Value<ChildStack<*, HomeComponent.Child>> = childStack(
         source = navigation,
@@ -27,6 +32,13 @@ class HomeComponentImpl(
         childFactory = ::createChild,
         key = "HomeComponentStack"
     )
+
+    init {
+        coroutineScope.launch {
+            testApi.put()
+            testApi.get()
+        }
+    }
 
     fun createChild(
         config: ChildConfig,
@@ -51,12 +63,14 @@ class HomeComponentImpl(
         private val profileComponentFactory: ProfileComponent.Factory,
         private val discoveryComponentFactory: DiscoveryComponent.Factory,
         private val analytics: HomeAnalytics,
+        private val testApi: TestApi,
     ) : HomeComponent.Factory {
         override fun invoke(context: ComponentContext): HomeComponent = HomeComponentImpl(
             componentContext = context,
             profileComponentFactory = profileComponentFactory,
             discoveryComponentFactory = discoveryComponentFactory,
             analytics = analytics,
+            testApi = testApi,
         )
     }
 }

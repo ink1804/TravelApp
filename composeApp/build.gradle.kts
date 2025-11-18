@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     id("com.ink1804.convention.application")
     id("com.ink1804.convention.di")
+    id("com.ink1804.convention.sqldelight")
 }
 
 kotlin {
@@ -26,10 +27,13 @@ kotlin {
             implementation(project(":core:app"))
             implementation(project(":core:platform"))
             implementation(project(":core:di"))
+            implementation(project(":core:database"))
+            implementation(project(":core:storage:impl"))
             implementation(project(":core:config:impl"))
             implementation(project(":core:analytics:impl-composite"))
 
             // Feature modules
+            implementation(project(":test:testImpl"))
             implementation(project(":feature:root:ui"))
             implementation(project(":feature:root:impl"))
             implementation(project(":feature:debug:impl"))
