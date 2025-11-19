@@ -7,6 +7,7 @@ import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
 import com.ink1804.core.coroutines.createCoroutineScope
+import com.ink1804.core.logger.Log
 import com.ink1804.feature.discovery.DiscoveryComponent
 import com.ink1804.feature.profile.ProfileComponent
 import com.ink1804.testapi.TestApi
@@ -35,8 +36,8 @@ class HomeComponentImpl(
 
     init {
         coroutineScope.launch {
-            testApi.put()
-            testApi.get()
+            testApi.put().also { Log.i("myLogs", "User added to db") }
+            testApi.get()?.also { Log.i("myLogs", "User: ${it.name}") }
         }
     }
 

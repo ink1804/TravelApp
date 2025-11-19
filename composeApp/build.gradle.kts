@@ -8,12 +8,13 @@ plugins {
 }
 
 kotlin {
+//    targets.withType<KotlinNativeTarget>().configureEach {
+//        binaries.withType<Framework>().configureEach {
+//            export(project(":core:di"))
+//        }
+//    }
+
     sourceSets {
-        targets.withType<KotlinNativeTarget>().configureEach {
-            binaries.withType<Framework>().configureEach {
-                export(project(":core:di"))
-            }
-        }
         iosMain.dependencies {
             api(project(":core:di"))
         }

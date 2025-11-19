@@ -6,6 +6,7 @@ plugins {
 }
 
 sqldelight {
+//    linkSqlite = true
     databases {
         create("AppDatabase") {
             packageName.set("com.ink1804.core.database")
