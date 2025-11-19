@@ -37,6 +37,7 @@ kotlin {
             implementation(project(":test:testImpl"))
             implementation(project(":feature:root:ui"))
             implementation(project(":feature:root:impl"))
+            implementation(project(":feature:onboarding"))
             implementation(project(":feature:debug:impl"))
             implementation(project(":feature:home:impl"))
             implementation(project(":feature:discovery:impl"))

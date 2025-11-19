@@ -14,6 +14,7 @@ import com.arkivanov.decompose.router.slot.ChildSlot
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.ink1804.feature.debug.DebugMenuScreen
 import com.ink1804.feature.home.HomeScreen
+import com.ink1804.feature.onboarding.ui.OnboardingScreen
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
@@ -38,8 +39,7 @@ private fun Content(
 ) {
     Box(
         modifier = Modifier
-            .fillMaxSize()
-            .systemBarsPadding(),
+            .fillMaxSize(),
     ) {
         Children(
             stack = state,
@@ -47,7 +47,7 @@ private fun Content(
             modifier = Modifier,
         ) {
             when (val child = it.instance) {
-                is RootComponent.Child.Onboarding -> Box {}
+                is RootComponent.Child.Onboarding -> OnboardingScreen(child.component)
                 is RootComponent.Child.Home -> HomeScreen(child.component)
             }
         }

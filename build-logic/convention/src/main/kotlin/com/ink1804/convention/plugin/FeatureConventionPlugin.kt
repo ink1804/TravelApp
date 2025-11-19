@@ -60,6 +60,8 @@ class FeatureConventionPlugin : BaseConventionPlugin() {
                     implementation(composeDependencies.ui)
                     implementation(composeDependencies.components.resources)
                     implementation(composeDependencies.components.uiToolingPreview)
+                    implementation(libs.findLibrary("material-icons-extended").get())
+                    implementation(libs.findLibrary("androidx-lifecycle-runtime-compose").get())
 
                     implementation(project(":core:logger"))
                     implementation(project(":core:coroutines"))
@@ -68,10 +70,7 @@ class FeatureConventionPlugin : BaseConventionPlugin() {
                     implementation(libs.findLibrary("decompose").get())
                     implementation(libs.findLibrary("decompose-extensions").get())
 
-                    implementation(libs.findLibrary("material-icons-extended").get())
                     implementation(libs.findLibrary("kotlinx-serialization-json").get())
-                    implementation(libs.findLibrary("androidx-lifecycle-viewmodel-compose").get())
-                    implementation(libs.findLibrary("androidx-lifecycle-runtime-compose").get())
                 }
             }
         }

@@ -1,7 +1,10 @@
 package com.ink1804.core.ui.util
 
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,6 +43,17 @@ fun Modifier.bounceClickable(
             )
         }
 }
+
+fun Modifier.clickWithRipple(onClick: () -> Unit): Modifier = composed {
+    this.clickable(
+        interactionSource = remember { MutableInteractionSource() },
+        indication = ripple(),
+        onClick = onClick
+    )
+}
+
+
+
 
 //ref: https://blog.canopas.com/jetpack-compose-cool-button-click-effects-c6bbecec7bcb
 //enum class ButtonState { Pressed, Idle }

@@ -8,6 +8,7 @@ kotlin {
             implementation(project(":feature:root:api"))
             implementation(project(":feature:home:ui"))
             implementation(project(":feature:debug:ui"))
+            implementation(project(":feature:onboarding"))
         }
     }
 }

@@ -6,6 +6,7 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
 import com.ink1804.feature.debug.DebugMenuComponent
 import com.ink1804.feature.home.HomeComponent
+import com.ink1804.feature.onboarding.OnboardingComponent
 
 interface RootComponent {
 
@@ -17,7 +18,7 @@ interface RootComponent {
 
     sealed interface Child {
         class Home(val component: HomeComponent) : Child
-        class Onboarding() : Child
+        class Onboarding(val component: OnboardingComponent) : Child
     }
 
     sealed interface OverlayChild {

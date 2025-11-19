@@ -1,5 +1,6 @@
 package com.ink1804.feature.home
 
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
@@ -29,6 +30,7 @@ fun HomeScreen(component: HomeComponent) {
     Scaffold(
         bottomBar = {
             CurvedBottomNavigation(
+                modifier = Modifier.navigationBarsPadding(),
                 items = navItems,
                 selectedTab = currentTab,
                 onItemSelected = component::onTabSelected

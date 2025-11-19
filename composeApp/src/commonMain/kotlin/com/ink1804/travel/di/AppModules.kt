@@ -10,6 +10,7 @@ import com.ink1804.core.storage.storageModule
 import com.ink1804.feature.debug.debugModule
 import com.ink1804.feature.discovery.discoveryModule
 import com.ink1804.feature.home.homeModule
+import com.ink1804.feature.onboarding.impl.onboardingModule
 import com.ink1804.feature.profile.profileModule
 import com.ink1804.feature.root.rootModule
 import com.ink1804.testimpl.testModule
@@ -29,6 +30,7 @@ fun getAppModules(): List<Module> = buildList {
     add(testModule)
     add(rootModule)
     add(debugModule)
+    add(onboardingModule)
     add(homeModule)
     add(discoveryModule)
     add(profileModule)

@@ -9,6 +9,7 @@ import com.arkivanov.decompose.router.slot.dismiss
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
+import com.arkivanov.decompose.router.stack.replaceCurrent
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.doOnPause
 import com.arkivanov.essenty.lifecycle.doOnResume
@@ -16,12 +17,14 @@ import com.ink1804.core.coroutines.createCoroutineScope
 import com.ink1804.core.platform.ShakeDetector
 import com.ink1804.feature.debug.DebugMenuComponent
 import com.ink1804.feature.home.HomeComponent
+import com.ink1804.feature.onboarding.OnboardingComponent
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 
 internal class RootComponentImpl(
     componentContext: ComponentContext,
     private val homeComponentFactory: HomeComponent.Factory,
+    private val onboardingComponentFactory: OnboardingComponent.Factory,
     private val debugMenuComponentFactory: DebugMenuComponent.Factory,
     private val shakeDetector: ShakeDetector,
 ) : RootComponent, ComponentContext by componentContext {
@@ -46,7 +49,7 @@ internal class RootComponentImpl(
 
     override val childStack: Value<ChildStack<*, RootComponent.Child>> = childStack(
         source = navigation,
-        initialConfiguration = ChildConfig.Home,
+        initialConfiguration = ChildConfig.Onboarding,
         serializer = ChildConfig.serializer(),
         handleBackButton = true,
         childFactory = ::createChild,
@@ -74,7 +77,16 @@ internal class RootComponentImpl(
         componentContext: ComponentContext
     ): RootComponent.Child = when (config) {
         ChildConfig.Home -> RootComponent.Child.Home(homeComponentFactory.invoke(componentContext))
-        ChildConfig.Onboarding -> RootComponent.Child.Onboarding()
+        ChildConfig.Onboarding -> RootComponent.Child.Onboarding(
+            component = onboardingComponentFactory.invoke(
+                context = componentContext,
+                onFinished = ::onOnboardingFinished
+            )
+        )
+    }
+
+    private fun onOnboardingFinished() {
+        navigation.replaceCurrent(ChildConfig.Home)
     }
 
     private fun createOverlayChild(
@@ -87,12 +99,14 @@ internal class RootComponentImpl(
     class Factory(
         private val homeComponentFactory: HomeComponent.Factory,
         private val debugMenuComponentFactory: DebugMenuComponent.Factory,
+        private val onboardingComponentFactory: OnboardingComponent.Factory,
         private val shakeDetector: ShakeDetector,
     ) : RootComponent.Factory {
         override fun invoke(context: ComponentContext): RootComponent = RootComponentImpl(
             componentContext = context,
             homeComponentFactory = homeComponentFactory,
             debugMenuComponentFactory = debugMenuComponentFactory,
+            onboardingComponentFactory = onboardingComponentFactory,
             shakeDetector = shakeDetector,
         )
     }

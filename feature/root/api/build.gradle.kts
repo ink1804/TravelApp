@@ -7,6 +7,7 @@ kotlin {
         commonMain.dependencies {
             implementation(project(":feature:home:api"))
             implementation(project(":feature:debug:api"))
+            implementation(project(":feature:onboarding"))
         }
     }
 }
