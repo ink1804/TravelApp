@@ -1,4 +1,4 @@
-package com.ink1804.core.storage
+package com.ink1804.core.storage.sqldelight
 
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList

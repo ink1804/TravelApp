@@ -13,6 +13,11 @@ class SqlDelightConventionPlugin : BaseConventionPlugin() {
                 commonMain.dependencies {
                     implementation(libs.findLibrary("sqldelight-runtime").get())
                     implementation(libs.findLibrary("sqldelight-coroutines").get())
+
+                    implementation(libs.findLibrary("russhwolf-settings").get())
+                    implementation(libs.findLibrary("russhwolf-settings-serialization").get())
+                    implementation(libs.findLibrary("russhwolf-settings-coroutines").get())
+                    implementation(libs.findLibrary("kotlinx-serialization-json").get())
                 }
             }
         }

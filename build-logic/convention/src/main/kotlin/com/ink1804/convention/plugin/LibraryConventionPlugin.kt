@@ -15,6 +15,7 @@ class LibraryConventionPlugin : BaseConventionPlugin() {
     override fun Project.configurePlugin() = with(project.pluginManager) {
         apply(libs.findPlugin("kotlinMultiplatform").get().get().pluginId)
         apply(libs.findPlugin("androidKotlinMultiplatformLibrary").get().get().pluginId)
+        apply(libs.findPlugin("kotlinSerialization").get().get().pluginId)
         apply("com.ink1804.convention.konfig")
     }
 
@@ -51,6 +52,7 @@ class LibraryConventionPlugin : BaseConventionPlugin() {
             sourceSets.apply {
                 commonMain.dependencies {
                     implementation(libs.findLibrary("kotlinx-coroutines-core").get())
+                    implementation(libs.findLibrary("kotlinx-serialization-json").get())
                 }
             }
         }

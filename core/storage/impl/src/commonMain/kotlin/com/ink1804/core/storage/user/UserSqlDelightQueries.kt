@@ -3,7 +3,7 @@ package com.ink1804.core.storage.user
 import app.cash.sqldelight.Query
 import com.ink1804.core.database.UserEntity
 import com.ink1804.core.database.UserQueries
-import com.ink1804.core.storage.SqlDelightKeyValueQueries
+import com.ink1804.core.storage.sqldelight.SqlDelightKeyValueQueries
 
 class UserSqlDelightQueries(
     private val q: UserQueries

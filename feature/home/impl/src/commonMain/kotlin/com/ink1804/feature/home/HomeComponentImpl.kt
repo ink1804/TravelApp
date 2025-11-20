@@ -37,7 +37,7 @@ class HomeComponentImpl(
     init {
         coroutineScope.launch {
             testApi.put().also { Log.i("myLogs", "User added to db") }
-            testApi.get()?.also { Log.i("myLogs", "User: ${it.name}") }
+            testApi.get()?.also { Log.i("myLogs", "User: ${it.name}, ${it.id}") }
         }
     }
 

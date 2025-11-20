@@ -1,4 +1,4 @@
-package com.ink1804.core.storage
+package com.ink1804.core.storage.sqldelight
 
 import kotlinx.coroutines.flow.Flow
 
