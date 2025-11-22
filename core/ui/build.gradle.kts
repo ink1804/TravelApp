@@ -4,6 +4,8 @@ plugins {
 
 kotlin {
     sourceSets {
-        commonMain.dependencies {}
+        commonMain.dependencies {
+            api(project(":core:settings:api"))
+        }
     }
 }

@@ -4,9 +4,11 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.slot.ChildSlot
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
+import com.ink1804.core.settings.AppThemeColorScheme
 import com.ink1804.feature.debug.DebugMenuComponent
 import com.ink1804.feature.home.HomeComponent
 import com.ink1804.feature.onboarding.OnboardingComponent
+import kotlinx.coroutines.flow.StateFlow
 
 interface RootComponent {
 

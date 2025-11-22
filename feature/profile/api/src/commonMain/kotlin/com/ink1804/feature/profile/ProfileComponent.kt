@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.StateFlow
 interface ProfileComponent {
     val state: StateFlow<ProfileState>
 
+    fun changeTheme()
     fun interface Factory {
         operator fun invoke(context: ComponentContext): ProfileComponent
     }

@@ -7,12 +7,17 @@ import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import com.arkivanov.essenty.lifecycle.destroy
 import com.arkivanov.essenty.lifecycle.resume
+import com.ink1804.core.settings.SettingsRepository
 import com.ink1804.feature.root.RootComponent
 import com.ink1804.feature.root.RootScreen
+import com.ink1804.travel.di.AppUi
 import org.koin.compose.getKoin
+import platform.UIKit.UIScreen
+import platform.UIKit.UIUserInterfaceStyle
 
 fun MainViewController() = ComposeUIViewController {
     val rootComponentFactory: RootComponent.Factory = getKoin().get()
+    val settingsRepository: SettingsRepository = getKoin().get()
 
     val lifecycle = remember { LifecycleRegistry() }
     DisposableEffect(Unit) {
@@ -20,7 +25,12 @@ fun MainViewController() = ComposeUIViewController {
         onDispose { lifecycle.destroy() }
     }
     val componentContext = remember { DefaultComponentContext(lifecycle) }
+    val isDarkTheme = UIScreen.mainScreen.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.UIUserInterfaceStyleDark
 
-    val root = remember { rootComponentFactory.invoke(componentContext) }
-    RootScreen(root)
+    AppUi(
+        settingsRepository = settingsRepository,
+    ) {
+        val root = remember { rootComponentFactory.invoke(componentContext) }
+        RootScreen(root)
+    }
 }

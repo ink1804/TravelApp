@@ -6,6 +6,7 @@ import com.ink1804.core.config.remoteConfigModule
 import com.ink1804.core.database.databaseModule
 import com.ink1804.core.network.networkModule
 import com.ink1804.core.platform.platformModule
+import com.ink1804.core.settings.settingsModule
 import com.ink1804.core.storage.storageModule
 import com.ink1804.feature.debug.debugModule
 import com.ink1804.feature.discovery.discoveryModule
@@ -19,6 +20,7 @@ import org.koin.core.module.Module
 fun getAppModules(): List<Module> = buildList {
     // Core modules
     add(appModule)
+    add(settingsModule)
     add(networkModule)
     add(platformModule)
     add(databaseModule)

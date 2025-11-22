@@ -28,6 +28,8 @@ kotlin {
             implementation(project(":core:app"))
             implementation(project(":core:platform"))
             implementation(project(":core:di"))
+            implementation(project(":core:ui"))
+            implementation(project(":core:settings:impl"))
             implementation(project(":core:database"))
             implementation(project(":core:network"))
             implementation(project(":core:storage:impl"))

@@ -1,13 +1,23 @@
 package com.ink1804.feature.root
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.windowInsetsBottomHeight
+import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.zIndex
 import com.arkivanov.decompose.extensions.compose.stack.Children
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import com.arkivanov.decompose.router.slot.ChildSlot
@@ -25,7 +35,6 @@ fun RootScreen(component: RootComponent) {
     Content(
         state = state,
         overlay = overlay,
-
         onCloseModalScreen = { component.closeDebug() }
     )
 }
@@ -39,6 +48,7 @@ private fun Content(
 ) {
     Box(
         modifier = Modifier
+            .background(color = MaterialTheme.colorScheme.background)
             .fillMaxSize(),
     ) {
         Children(
@@ -61,6 +71,23 @@ private fun Content(
 
             null -> Unit
         }
+
+        Spacer(
+            modifier = Modifier
+                .windowInsetsTopHeight(WindowInsets.statusBars)
+                .align(Alignment.TopCenter)
+                .fillMaxWidth()
+                .background(MaterialTheme.colorScheme.surface)
+        )
+
+        Spacer(
+            modifier = Modifier
+                .windowInsetsBottomHeight(WindowInsets.navigationBars)
+                .align(Alignment.BottomCenter)
+                .zIndex(2f)
+                .fillMaxWidth()
+                .background(MaterialTheme.colorScheme.surface)
+        )
     }
 }
 

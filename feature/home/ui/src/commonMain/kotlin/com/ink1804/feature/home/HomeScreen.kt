@@ -6,6 +6,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,6 +32,7 @@ fun HomeScreen(component: HomeComponent) {
         bottomBar = {
             CurvedBottomNavigation(
                 modifier = Modifier.navigationBarsPadding(),
+                navBarBackgroundColor = MaterialTheme.colorScheme.surface,
                 items = navItems,
                 selectedTab = currentTab,
                 onItemSelected = component::onTabSelected

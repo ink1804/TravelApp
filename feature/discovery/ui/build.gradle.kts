@@ -6,6 +6,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(project(":feature:discovery:api"))
+            implementation(project(":core:ui"))
         }
     }
 }
