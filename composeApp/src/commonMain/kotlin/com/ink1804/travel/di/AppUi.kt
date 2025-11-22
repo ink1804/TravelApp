@@ -12,9 +12,9 @@ fun AppUi(
     content: @Composable () -> Unit,
 ) {
     val appColorScheme by settingsRepository.appColorScheme.collectAsState()
+
     AppTheme(
         selectedTheme = appColorScheme,
-    ) {
-        content()
-    }
+        content = content
+    )
 }

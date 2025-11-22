@@ -21,7 +21,11 @@ class ProfileComponentImpl(
 
     override fun changeTheme() {
         scope.launch {
-            settingsRepository.updateAppColorScheme(AppThemeColorScheme.DefaultDark)
+            if (settingsRepository.isDarkTheme()) {
+                settingsRepository.updateAppColorScheme(AppThemeColorScheme.DefaultLight)
+            } else {
+                settingsRepository.updateAppColorScheme(AppThemeColorScheme.DefaultDark)
+            }
         }
     }
 

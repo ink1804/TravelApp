@@ -20,7 +20,7 @@ fun DiscoveryScreen(component: DiscoveryComponent) {
     ) {
         DarkOverlay(
             modifier = Modifier.align(Alignment.BottomCenter),
-            fraction = 0.07f,
+            fraction = 0.08f,
             colors = listOf(Color.Transparent, Color(0xD6000000)),
         )
 
