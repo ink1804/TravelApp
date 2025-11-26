@@ -1,7 +1,7 @@
-package com.ink1804.feature.onboarding
+package com.ink1804.feature.onboarding.api
 
 import com.arkivanov.decompose.ComponentContext
-import com.ink1804.feature.onboarding.impl.OnboardingState
+import com.ink1804.feature.onboarding.api.OnboardingState
 import kotlinx.coroutines.flow.StateFlow
 
 interface OnboardingComponent {

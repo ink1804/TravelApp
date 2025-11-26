@@ -6,7 +6,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(project(":feature:debug:api"))
-            implementation(project(":core::ui"))
+            implementation(project(":core:ui"))
         }
     }
 }

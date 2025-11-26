@@ -26,6 +26,7 @@ kotlin {
 
             // Core modules
             implementation(project(":core:app"))
+            implementation(project(":core:resources"))
             implementation(project(":core:platform"))
             implementation(project(":core:di"))
             implementation(project(":core:ui"))

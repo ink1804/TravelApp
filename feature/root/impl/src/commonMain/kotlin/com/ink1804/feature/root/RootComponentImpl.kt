@@ -19,7 +19,7 @@ import com.ink1804.core.settings.AppThemeColorScheme
 import com.ink1804.core.settings.SettingsRepository
 import com.ink1804.feature.debug.DebugMenuComponent
 import com.ink1804.feature.home.HomeComponent
-import com.ink1804.feature.onboarding.OnboardingComponent
+import com.ink1804.feature.onboarding.api.OnboardingComponent
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable

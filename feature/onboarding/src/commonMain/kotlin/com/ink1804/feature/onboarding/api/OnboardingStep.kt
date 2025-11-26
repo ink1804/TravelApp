@@ -1,4 +1,4 @@
-package com.ink1804.feature.onboarding.impl
+package com.ink1804.feature.onboarding.api
 
 sealed class OnboardingStep(val key: String) {
     object Welcome : OnboardingStep("onboarding_welcome")

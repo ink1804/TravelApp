@@ -31,9 +31,9 @@ import com.ink1804.core.ui.component.BoxWithOverlays
 import com.ink1804.core.ui.component.button.ButtonStyle
 import com.ink1804.core.ui.component.button.image_button.ImageButton
 import com.ink1804.core.ui.util.toPreviewState
-import com.ink1804.feature.onboarding.OnboardingComponent
-import com.ink1804.feature.onboarding.impl.OnboardingState
-import com.ink1804.feature.onboarding.impl.OnboardingStep
+import com.ink1804.feature.onboarding.api.OnboardingComponent
+import com.ink1804.feature.onboarding.api.OnboardingState
+import com.ink1804.feature.onboarding.api.OnboardingStep
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable

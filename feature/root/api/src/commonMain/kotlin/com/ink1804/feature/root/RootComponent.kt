@@ -7,8 +7,7 @@ import com.arkivanov.decompose.value.Value
 import com.ink1804.core.settings.AppThemeColorScheme
 import com.ink1804.feature.debug.DebugMenuComponent
 import com.ink1804.feature.home.HomeComponent
-import com.ink1804.feature.onboarding.OnboardingComponent
-import kotlinx.coroutines.flow.StateFlow
+import com.ink1804.feature.onboarding.api.OnboardingComponent
 
 interface RootComponent {
 

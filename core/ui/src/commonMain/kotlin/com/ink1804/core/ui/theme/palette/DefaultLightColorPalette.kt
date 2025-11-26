@@ -1,7 +1,6 @@
 package com.ink1804.core.ui.theme.palette
 
 import androidx.compose.ui.graphics.Color
-import com.ink1804.core.ui.theme.palette.ColorPalette
 
 object DefaultLightColorPalette : ColorPalette {
     override val primary = Color(0xFFF4B84A)

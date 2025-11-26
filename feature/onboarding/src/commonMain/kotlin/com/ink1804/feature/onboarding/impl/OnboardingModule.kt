@@ -1,6 +1,6 @@
 package com.ink1804.feature.onboarding.impl
 
-import com.ink1804.feature.onboarding.OnboardingComponent
+import com.ink1804.feature.onboarding.api.OnboardingComponent
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
 import org.koin.dsl.module

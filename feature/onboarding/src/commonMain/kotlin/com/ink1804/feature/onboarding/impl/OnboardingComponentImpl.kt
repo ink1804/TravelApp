@@ -1,7 +1,9 @@
 package com.ink1804.feature.onboarding.impl
 
 import com.arkivanov.decompose.ComponentContext
-import com.ink1804.feature.onboarding.OnboardingComponent
+import com.ink1804.feature.onboarding.api.OnboardingComponent
+import com.ink1804.feature.onboarding.api.OnboardingState
+import com.ink1804.feature.onboarding.api.onboardingSteps
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -45,15 +47,5 @@ internal class OnboardingComponentImpl(
             onFinished = onFinished,
         )
     }
-}
-
-data class OnboardingState(
-    val index: Int = 0,
-    val step: OnboardingStep = onboardingSteps[0],
-    val allowBackNavigation: Boolean = index > 0,
-    val showProgress: Boolean = true,
-) {
-    val progress: Float
-        get() = index / onboardingSteps.size.toFloat()
 }
 

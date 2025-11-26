@@ -64,6 +64,7 @@ class FeatureConventionPlugin : BaseConventionPlugin() {
                     implementation(libs.findLibrary("androidx-lifecycle-runtime-compose").get())
 
                     implementation(project(":core:logger"))
+                    implementation(project(":core:resources"))
                     implementation(project(":core:coroutines"))
                     implementation(project(":core:analytics:api"))
 
