@@ -15,8 +15,6 @@ class FeatureConventionPlugin : BaseConventionPlugin() {
     override fun Project.configurePlugin() = with(project.pluginManager) {
         apply(libs.findPlugin("kotlinMultiplatform").get().get().pluginId)
         apply(libs.findPlugin("androidKotlinMultiplatformLibrary").get().get().pluginId)
-        apply(libs.findPlugin("composeMultiplatform").get().get().pluginId)
-        apply(libs.findPlugin("composeCompiler").get().get().pluginId)
         apply(libs.findPlugin("kotlinSerialization").get().get().pluginId)
         apply("com.ink1804.convention.konfig")
     }
@@ -50,27 +48,14 @@ class FeatureConventionPlugin : BaseConventionPlugin() {
     }
 
     override fun Project.configureCommonDependencies() {
-        val composeDependencies = extensions.getByType<ComposeExtension>().dependencies
         extensions.getByType<KotlinMultiplatformExtension>().apply {
             sourceSets.apply {
                 commonMain.dependencies {
-                    implementation(composeDependencies.runtime)
-                    implementation(composeDependencies.foundation)
-                    implementation(composeDependencies.material3)
-                    implementation(composeDependencies.ui)
-                    implementation(composeDependencies.components.resources)
-                    implementation(composeDependencies.components.uiToolingPreview)
-                    implementation(libs.findLibrary("material-icons-extended").get())
-                    implementation(libs.findLibrary("androidx-lifecycle-runtime-compose").get())
-
                     implementation(project(":core:logger"))
-                    implementation(project(":core:resources"))
                     implementation(project(":core:coroutines"))
                     implementation(project(":core:analytics:api"))
 
-                    implementation(libs.findLibrary("decompose").get())
-                    implementation(libs.findLibrary("decompose-extensions").get())
-
+                    implementation(libs.findLibrary("kotlinx-coroutines-core").get())
                     implementation(libs.findLibrary("kotlinx-serialization-json").get())
                 }
             }

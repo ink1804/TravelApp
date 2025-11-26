@@ -49,6 +49,14 @@ gradlePlugin {
             id = "com.ink1804.convention.konfig"
             implementationClass = "com.ink1804.convention.plugin.KonfigConventionPlugin"
         }
+        register("com.ink1804.convention.decompose"){
+            id = "com.ink1804.convention.decompose"
+            implementationClass = "com.ink1804.convention.plugin.DecomposeConventionPlugin"
+        }
+        register("com.ink1804.convention.compose"){
+            id = "com.ink1804.convention.compose"
+            implementationClass = "com.ink1804.convention.plugin.ComposeConventionPlugin"
+        }
         register("com.ink1804.convention.sqldelight"){
             id = "com.ink1804.convention.sqldelight"
             implementationClass = "com.ink1804.convention.plugin.SqlDelightConventionPlugin"
