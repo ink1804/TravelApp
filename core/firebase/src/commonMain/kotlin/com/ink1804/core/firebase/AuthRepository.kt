@@ -1,8 +1,6 @@
 package com.ink1804.core.firebase
 
-import dev.gitlive.firebase.Firebase
 import dev.gitlive.firebase.auth.FirebaseAuth
-import dev.gitlive.firebase.remoteconfig.remoteConfig
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -15,7 +13,6 @@ interface AuthRepository {
     val currentUser: Flow<AppUser?>
     suspend fun singIn(email: String, password: String)
     suspend fun singOut()
-    suspend fun featureKeys(): Map<String, Boolean>
 }
 
 internal class AuthRepositoryImpl(
@@ -36,10 +33,5 @@ internal class AuthRepositoryImpl(
 
     override suspend fun singOut() {
         auth.signOut()
-    }
-
-    override suspend fun featureKeys(): Map<String, Boolean> {
-        Firebase.remoteConfig.fetchAndActivate()
-        return Firebase.remoteConfig.all.map { it.key to it.value.asBoolean() }.toMap()
     }
 }

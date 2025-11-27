@@ -7,7 +7,7 @@ plugins {
 kotlin {
     sourceSets {
         androidMain.dependencies {
-            api(project.dependencies.platform(libs.firebase.bom))
+            implementation(project.dependencies.platform(libs.firebase.bom))
             implementation(libs.firebase.common)
 //            implementation(libs.firebase.crashlytics)
 //            implementation(libs.firebase.config)

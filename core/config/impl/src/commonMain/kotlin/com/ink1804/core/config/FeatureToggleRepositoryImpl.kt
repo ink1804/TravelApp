@@ -1,18 +1,23 @@
 package com.ink1804.core.config
 
-class FeatureToggleRepositoryImpl: FeatureToggleRepository {
-    override fun isEnabled(featureKey: FeatureKey): Boolean {
-        //todo storage.get(featureKey).isEnabled
-        return false
+import com.ink1804.core.firebase.FirebaseRemoteConfigRepository
+
+class FeatureToggleRepositoryImpl(
+    private val firebaseRemoteConfigRepository: FirebaseRemoteConfigRepository,
+): FeatureToggleRepository {
+    override suspend fun isEnabled(featureKey: FeatureKey): Boolean {
+        //todo add local storage
+        return firebaseRemoteConfigRepository.getConfig(featureKey.key).toBoolean()
     }
 
     override fun setEnabled(featureKey: FeatureKey, enabled: Boolean) {
-        //todo storage.set(featureKey)
+        //todo add local storage
     }
 
-    override fun getAll(): Map<FeatureKey, Boolean> {
-        //todo storage.getAll()
-        return mapOf()
+    override suspend fun getAll(): List<Pair<String, Boolean>> {
+        //todo add local storage
+        return firebaseRemoteConfigRepository.getAll("exp_").map { (key, value) ->
+            key to value.toBoolean()
+        }
     }
-
 }

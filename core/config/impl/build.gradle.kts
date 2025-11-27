@@ -6,6 +6,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
+            implementation(project(":core:firebase"))
             implementation(project(":core:config:api"))
             implementation(project(":core:logger"))
         }
