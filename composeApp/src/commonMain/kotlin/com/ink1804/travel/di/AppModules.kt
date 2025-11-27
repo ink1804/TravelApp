@@ -4,6 +4,7 @@ import com.ink1804.core.analytics.compositeAnalyticsModule
 import com.ink1804.core.app.appModule
 import com.ink1804.core.config.remoteConfigModule
 import com.ink1804.core.database.databaseModule
+import com.ink1804.core.firebase.firebaseModule
 import com.ink1804.core.network.networkModule
 import com.ink1804.core.platform.platformModule
 import com.ink1804.core.resources.resourcesModule
@@ -22,6 +23,7 @@ fun getAppModules(): List<Module> = buildList {
     // Core modules
     add(appModule)
     add(resourcesModule)
+    add(firebaseModule)
     add(settingsModule)
     add(networkModule)
     add(platformModule)

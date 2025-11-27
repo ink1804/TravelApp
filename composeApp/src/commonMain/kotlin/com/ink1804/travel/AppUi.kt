@@ -1,4 +1,4 @@
-package com.ink1804.travel.di
+package com.ink1804.travel
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState

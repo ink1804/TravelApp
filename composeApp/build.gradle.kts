@@ -5,14 +5,15 @@ plugins {
     id("com.ink1804.convention.application")
     id("com.ink1804.convention.di")
     id("com.ink1804.convention.sqldelight")
+    id("com.google.gms.google-services")
 }
 
 kotlin {
-//    targets.withType<KotlinNativeTarget>().configureEach {
-//        binaries.withType<Framework>().configureEach {
-//            export(project(":core:di"))
-//        }
-//    }
+    targets.withType<KotlinNativeTarget>().configureEach {
+        binaries.withType<Framework>().configureEach {
+            export(project(":core:di"))
+        }
+    }
 
     sourceSets {
         iosMain.dependencies {
@@ -27,6 +28,7 @@ kotlin {
             // Core modules
             implementation(project(":core:app"))
             implementation(project(":core:resources"))
+            implementation(project(":core:firebase"))
             implementation(project(":core:platform"))
             implementation(project(":core:di"))
             implementation(project(":core:ui"))

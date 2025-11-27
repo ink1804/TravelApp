@@ -10,7 +10,6 @@ import com.arkivanov.decompose.DefaultComponentContext
 import com.ink1804.core.settings.SettingsRepository
 import com.ink1804.feature.root.RootComponent
 import com.ink1804.feature.root.RootScreen
-import com.ink1804.travel.di.AppUi
 import org.koin.android.ext.android.getKoin
 
 class MainActivity : ComponentActivity() {

@@ -8,7 +8,7 @@ import com.ink1804.testapi.User
 import org.koin.dsl.module
 
 val testModule = module {
-    single<TestApi> { TestImpl(get(), get()) }
+    single<TestApi> { TestImpl(get(), get(), get()) }
 
     single<Storage<User>> {
         get<StorageFactory>().create<User>(
