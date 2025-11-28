@@ -1,9 +1,9 @@
 package com.ink1804.testimpl
 
-import com.ink1804.core.config.FeatureToggleRepository
 import com.ink1804.core.database.UserEntity
 import com.ink1804.core.storage.settings.Storage
 import com.ink1804.core.storage.sqldelight.LocalStore
+import com.ink1804.data.config.FeatureToggleRepository
 import com.ink1804.testapi.TestApi
 import com.ink1804.testapi.User
 

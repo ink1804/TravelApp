@@ -10,7 +10,7 @@ kotlin {
             api(project(":test:testApi"))
             implementation(project(":core:storage:api"))
             implementation(project(":core:database"))
-            implementation(project(":core:config:api"))
+            implementation(project(":data:config"))
         }
     }
 }
