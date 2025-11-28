@@ -5,14 +5,15 @@ plugins {
     id("com.ink1804.convention.application")
     id("com.ink1804.convention.di")
     id("com.ink1804.convention.sqldelight")
+    id("com.google.gms.google-services")
 }
 
 kotlin {
-//    targets.withType<KotlinNativeTarget>().configureEach {
-//        binaries.withType<Framework>().configureEach {
-//            export(project(":core:di"))
-//        }
-//    }
+    targets.withType<KotlinNativeTarget>().configureEach {
+        binaries.withType<Framework>().configureEach {
+            export(project(":core:di"))
+        }
+    }
 
     sourceSets {
         iosMain.dependencies {
@@ -24,6 +25,13 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.components.resources)
 
+            // Infra modules
+            implementation(project(":infra:supabase:impl"))
+            implementation(project(":infra:firebase:impl"))
+            implementation(project(":core:analytics:impl-composite"))
+            implementation(project(":core:storage:impl"))
+            implementation(project(":infra:sqldelight:impl"))
+
             // Core modules
             implementation(project(":core:app"))
             implementation(project(":core:resources"))
@@ -31,11 +39,12 @@ kotlin {
             implementation(project(":core:di"))
             implementation(project(":core:ui"))
             implementation(project(":core:settings:impl"))
-            implementation(project(":core:database"))
             implementation(project(":core:network"))
-            implementation(project(":core:storage:impl"))
-            implementation(project(":core:config:impl"))
-            implementation(project(":core:analytics:impl-composite"))
+
+            // Data modules
+            implementation(project(":data:user"))
+            implementation(project(":data:auth"))
+            implementation(project(":data:config"))
 
             // Feature modules
             implementation(project(":test:testImpl"))

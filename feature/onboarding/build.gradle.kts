@@ -9,6 +9,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":core:ui"))
+            implementation(project(":infra:supabase:impl"))
+            implementation(project(":data:auth")) //todo change to domain
         }
     }
 }

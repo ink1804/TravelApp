@@ -10,7 +10,6 @@ import com.arkivanov.essenty.lifecycle.resume
 import com.ink1804.core.settings.SettingsRepository
 import com.ink1804.feature.root.RootComponent
 import com.ink1804.feature.root.RootScreen
-import com.ink1804.travel.di.AppUi
 import org.koin.compose.getKoin
 import platform.UIKit.UIScreen
 import platform.UIKit.UIUserInterfaceStyle

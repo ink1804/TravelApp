@@ -13,7 +13,6 @@ class DiConventionPlugin : BaseConventionPlugin() {
                 commonMain.dependencies {
                     api(libs.findLibrary("koin-core").get())
                     implementation(libs.findLibrary("koin-compose").get())
-                    implementation(libs.findLibrary("koin-compose-viewmodel").get())
                 }
             }
         }

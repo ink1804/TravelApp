@@ -1,16 +1,20 @@
 import SwiftUI
 import ComposeApp
+import FirebaseCore
 
 @main
 struct iOSApp: App {
 
     init() {
-        IosKoinInitKt.doInitKoin()
+       FirebaseApp.configure()
+       IosKoinInitKt.doInitKoin()
     }
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().onOpenURL { url in
+                HandleDeepLinkKt.doHandleDeepLink(url: url)
+            }
         }
     }
 }
