@@ -7,7 +7,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":core:storage:api"))
-            implementation(project(":core:database"))
+            implementation(project(":infra:sqldelight:api"))
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.ink1804.infra.supabase
 
+import com.ink1804.core.logger.Log
 import io.github.jan.supabase.auth.Auth
 import io.github.jan.supabase.postgrest.query.Columns
 import io.github.jan.supabase.postgrest.query.PostgrestQueryBuilder
@@ -29,5 +30,18 @@ internal class UserRemoteDataSourceImpl(
         users.insert(newUser)
 
         return newUser
+    }
+
+    override suspend fun getUserById(id: String): SupabaseUser? {
+        auth.currentUserOrNull() ?: error("User is not authorized")
+
+        val exitingUser = users
+            .select(columns = Columns.ALL) {
+                filter { eq("id", id) }
+            }
+            .decodeList<SupabaseUser>()
+            .firstOrNull()
+
+        return exitingUser
     }
 }

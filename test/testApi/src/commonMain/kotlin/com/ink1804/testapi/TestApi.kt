@@ -5,4 +5,5 @@ interface TestApi {
     suspend fun put()
     suspend fun get(): User?
     suspend fun getAllKeys(): Map<String, Boolean>
+    suspend fun userTest()
 }

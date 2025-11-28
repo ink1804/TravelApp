@@ -30,7 +30,7 @@ kotlin {
             implementation(project(":infra:firebase:impl"))
             implementation(project(":core:analytics:impl-composite"))
             implementation(project(":core:storage:impl"))
-            implementation(project(":core:database"))
+            implementation(project(":infra:sqldelight:impl"))
 
             // Core modules
             implementation(project(":core:app"))

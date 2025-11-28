@@ -13,5 +13,5 @@ internal class SuperbaseAuthRepositoryImpl(
 
     override val isAuthorized: Flow<Boolean> = auth
         .sessionStatus.map { it is SessionStatus.Authenticated }
-        .onEach { Log.d("Auth", "isAuthorized: ${auth.currentUserOrNull()}") }
+        .onEach { Log.d("Auth", "isAuthorized: ${it}") }
 }

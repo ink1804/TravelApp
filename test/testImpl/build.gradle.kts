@@ -9,8 +9,9 @@ kotlin {
         commonMain.dependencies {
             api(project(":test:testApi"))
             implementation(project(":core:storage:api"))
-            implementation(project(":core:database"))
             implementation(project(":data:config"))
+            implementation(project(":data:user"))
+            implementation(project(":data:auth"))
         }
     }
 }

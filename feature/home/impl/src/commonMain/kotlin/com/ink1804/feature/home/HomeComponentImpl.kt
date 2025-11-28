@@ -36,6 +36,7 @@ class HomeComponentImpl(
 
     init {
         coroutineScope.launch {
+            testApi.userTest()
             testApi.put().also { Log.i("myLogs", "User added to db") }
             testApi.get()?.also { Log.i("myLogs", "User: ${it.name}, ${it.id}") }
             testApi.getAllKeys().also { Log.i("myLogs", "All feature keys: $it") }

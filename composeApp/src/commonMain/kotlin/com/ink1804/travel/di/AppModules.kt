@@ -2,7 +2,6 @@ package com.ink1804.travel.di
 
 import com.ink1804.core.analytics.compositeAnalyticsModule
 import com.ink1804.core.app.appModule
-import com.ink1804.core.database.databaseModule
 import com.ink1804.core.network.networkModule
 import com.ink1804.core.platform.platformModule
 import com.ink1804.core.resources.resourcesModule
@@ -18,6 +17,7 @@ import com.ink1804.feature.onboarding.impl.onboardingModule
 import com.ink1804.feature.profile.profileModule
 import com.ink1804.feature.root.rootModule
 import com.ink1804.infra.firebase.firebaseModule
+import com.ink1804.infra.sqldelight.sqldelightModule
 import com.ink1804.infra.supabase.supabaseModule
 import com.ink1804.testimpl.testModule
 import org.koin.core.module.Module
@@ -35,7 +35,7 @@ fun getAppModules(): List<Module> = buildList {
     // Infra modules
     add(supabaseModule)
     add(firebaseModule)
-    add(databaseModule)
+    add(sqldelightModule)
 
     // Data modules
     add(authModule)
